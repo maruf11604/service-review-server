@@ -80,6 +80,12 @@ async function run() {
       const result = await review.deleteOne(query);
       res.send(result);
     });
+
+    app.post("/services", (req, res) => {
+      const order = req.body;
+      const result = service.insertOne(order);
+      res.send(result);
+    });
   } finally {
   }
 }
