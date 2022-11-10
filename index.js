@@ -81,7 +81,7 @@ async function run() {
       res.send(result);
     });
 
-    app.post("/services", (req, res) => {
+    app.post("/allservices", (req, res) => {
       const order = req.body;
       const result = service.insertOne(order);
       res.send(result);
