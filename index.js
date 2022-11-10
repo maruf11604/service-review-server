@@ -53,13 +53,14 @@ async function run() {
       const result = await review.insertOne(user);
       res.send(result);
     });
-
+    //read api
     app.get("/reviews", async (req, res) => {
       const query = {};
       const cursor = review.find(query);
       const reviews = await cursor.toArray();
       res.send(reviews);
     });
+    //update
     app.patch("/reviews/:id", async (req, res) => {
       const id = req.params.id;
       const status = req.body.status;
@@ -74,13 +75,14 @@ async function run() {
       const result = await review.updateOne(query, updateDoc);
       res.send(result);
     });
+    //delete
     app.delete("/reviews/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: ObjectId(id) };
       const result = await review.deleteOne(query);
       res.send(result);
     });
-
+    // all service
     app.post("/allservices", (req, res) => {
       const order = req.body;
       const result = service.insertOne(order);
